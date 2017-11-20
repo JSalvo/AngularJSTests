@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="test">
     <head>
         <meta charset="UTF-8">
         <title>Test per AngularJS</title>
+        
+        <link href="css/index.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        
+        <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+
+        function drop(ev) 
+        {
+            ev.preventDefault();
+            console.log("Ciao");
+
+        }
+        </script>
+        
+     
     </head>
 
-    <body>
-        CONTENUTO
+    <body ng-controller="Tags as tags">
+    
+    
+        <div id="{{tag.id}}" class="js_tag" ng-repeat="tag in tags.tags" style="background-color:{{tag.color}};" ng-click="tags.remove_tag(tag.id)" draggable="true">
+
+            {{tag.value}}
+
+        </div>
+          
+    
+        <div style="width:300px;height:300px;background-color:red;" ng-controller="Cells as cells" ondrop="cells.droppa(event)" ondragover="allowDrop(event)">
+        </div>
+    
+        
     </body>
 
 </html>
